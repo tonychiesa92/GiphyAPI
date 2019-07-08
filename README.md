@@ -4,6 +4,8 @@
 
 * I called the GIPHY API and used JavaScript and jQuery to change the HTML elements of the site.
 
+* Check out the page on your moblie devices!
+
 
 ### Instructions
 
