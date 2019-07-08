@@ -35,13 +35,11 @@
     <div id="buttons-view"></div>
 
     <form>
-
         <div class="form-group col-md-3">
             <label for="animal-input">Add an animal!</label>
             <input type="text" id="animal-input"><br>
             <button class="btn btn-outline-danger" id="add-animal" type="submit" value="Add an animal">Submit</button>
         </div>
-        
     </form>
 
     <div id="gifs-appear-here"></div>
@@ -73,6 +71,30 @@
         });
 
         renderButtons();
+
+        $(".btn-outline-primary").on("click", function () {
+
+            var animalsGif = $(this).attr("data-name");
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animalsGif + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+
+                .then(function (response) {
+                    var results = response.data;
+                    for (var i = 0; i < results.length; i++) {
+                        var animalDiv = $("<div>");
+                        var p = $("<p>").text("Rating: " + results[i].rating);
+                        var animalImage = $("<img>");
+                        animalImage.attr("src", results[i].images.fixed_height.url);
+                        animalDiv.append(p);
+                        animalDiv.append(animalImage);
+                        $("#gifs-appear-here").prepend(animalDiv);
+                    }
+                });
+        });
 
     </script>
 </body>
