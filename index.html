@@ -12,7 +12,17 @@
     <title>GiphyAPI</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+            margin: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,59 +30,51 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <div class="container">
 
 
+    <div id="buttons-view"></div>
 
-        <div id="buttons-view"></div>
+    <form>
 
-        <form id="animal-form">
+        <div class="form-group col-md-3">
             <label for="animal-input">Add an animal!</label>
             <input type="text" id="animal-input"><br>
-            <input id="add-animal" type="submit" value="Add an animal!">
-        </form>
+            <button class="btn btn-outline-danger" id="add-animal" type="submit" value="Add an animal">Submit</button>
+        </div>
+        
+    </form>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <div id="gifs-appear-here"></div>
 
-        <script type="text/javascript">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-            var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+    <script type="text/javascript">
 
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response);
-            });
+        var topics = ["Cat", "Dog", "Rabbit", "Lion", "Frog", "Mouse", "Monkey", "Lizard", "Horse", "Skunk", "Goldfish", "Bird", "Pig"];
+        function renderButtons() {
+            $("#buttons-view").empty();
 
+            for (var i = 0; i < topics.length; i++) {
 
-            var topics = ["Cat", "Dog", "Rabbit", "Lion", "Frog", "Mouse", "Monkey", "Lizard"];
-            function renderButtons() {
-                $("#buttons-view").empty();
-
-                for (var i = 0; i < topics.length; i++) {
-
-                    var a = $("<button>");
-                    a.addClass("animal");
-                    a.attr("data-name", topics[i]);
-                    a.text(topics[i]);
-                    $("#buttons-view").append(a);
-                }
+                var a = $("<button type='button' class='btn btn-outline-primary'>");
+                a.addClass("animal");
+                a.attr("data-name", topics[i]);
+                a.text(topics[i]);
+                $("#buttons-view").append(a);
             }
+        }
 
+        $("#add-animal").on("click", function (event) {
 
-            $("#add-animal").on("click", function (event) {
-
-                event.preventDefault();
-                var animal = $("#animal-input").val().trim();
-                topics.push(animal);
-                renderButtons();
-            });
-
-
+            event.preventDefault();
+            var animal = $("#animal-input").val().trim();
+            topics.push(animal);
             renderButtons();
+        });
 
-        </script>
+        renderButtons();
+
+    </script>
 </body>
 
 </html>

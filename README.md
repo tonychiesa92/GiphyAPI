@@ -2,9 +2,9 @@
 
 * I used the GIPHY API to make a dynamic web page that populates with gifs of your choice.
 
-* I called the GIPHY API and used JavaScript and jQuery to change the HTML elements of the site.
+* I called the GIPHY API and used JavaScript and jQuery to change the HTML & Bootstrap elements of the site.
 
-* Check out the page on your moblie devices!
+* The page is also mobile device friendly!
 
 
 ### Instructions
