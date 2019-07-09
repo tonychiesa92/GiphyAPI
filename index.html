@@ -34,13 +34,11 @@
 
     <div id="buttons-view"></div>
 
-    <form>
-        <div class="form-group col-md-3">
-            <label for="animal-input">Add an animal!</label>
-            <input type="text" id="animal-input"><br>
-            <button class="btn btn-outline-danger" id="add-animal" type="submit" value="Add an animal">Submit</button>
-        </div>
-    </form>
+    <div class="form-group col-md-3">
+        <label for="animal-input">Add an animal!</label>
+        <input type="text" id="animal-input"><br>
+        <button class="btn btn-outline-danger" id="add-animal" type="submit" value="Add an animal">Submit</button>
+    </div>
 
     <div id="gifs-appear-here"></div>
 
@@ -48,7 +46,9 @@
 
     <script type="text/javascript">
 
+        
         var topics = ["Cat", "Dog", "Rabbit", "Lion", "Frog", "Mouse", "Monkey", "Lizard", "Horse", "Skunk", "Goldfish", "Bird", "Pig"];
+
         function renderButtons() {
             $("#buttons-view").empty();
 
@@ -62,15 +62,17 @@
             }
         }
 
-        $("#add-animal").on("click", function (event) {
+        $(".btn-outline-danger").on("click", function (event) {  
 
             event.preventDefault();
             var animal = $("#animal-input").val().trim();
             topics.push(animal);
             renderButtons();
         });
+        
 
         renderButtons();
+        
 
         $(".btn-outline-primary").on("click", function () {
 
@@ -88,10 +90,10 @@
                         var animalDiv = $("<div>");
                         var p = $("<p>").text("Rating: " + results[i].rating);
                         var animalImage = $("<img>");
-                        animalImage.attr("src", results[i].images.fixed_height_still.url); 
-                        animalImage.attr("data-still", results[i].images.fixed_height_still.url); 
-                        animalImage.attr("data-animate", results[i].images.fixed_height.url); 
-                        animalImage.attr("data-state", "still"); 
+                        animalImage.attr("src", results[i].images.fixed_height_still.url);
+                        animalImage.attr("data-still", results[i].images.fixed_height_still.url);
+                        animalImage.attr("data-animate", results[i].images.fixed_height.url);
+                        animalImage.attr("data-state", "still");
                         animalImage.addClass("gif");
                         animalDiv.append(p);
                         animalDiv.append(animalImage);
@@ -100,8 +102,8 @@
                 });
         });
 
-        
-            $(document).on("click", ".gif", function(){
+
+        $(document).on("click", ".gif", function () {
 
             var state = $(this).attr("data-state");
 
