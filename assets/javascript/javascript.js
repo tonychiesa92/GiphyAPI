@@ -43,6 +43,7 @@ $(document).on("click",".btn-outline-primary", function () {
                 var animalDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + results[i].rating);
                 var animalImage = $("<img>");
+            
                 animalImage.attr("src", results[i].images.fixed_height_still.url);
                 animalImage.attr("data-still", results[i].images.fixed_height_still.url);
                 animalImage.attr("data-animate", results[i].images.fixed_height.url);
@@ -50,6 +51,7 @@ $(document).on("click",".btn-outline-primary", function () {
                 animalImage.addClass("gif");
                 animalDiv.append(p);
                 animalDiv.append(animalImage);
+                
                 $("#gifs-appear-here").prepend(animalDiv);
             }
         });
