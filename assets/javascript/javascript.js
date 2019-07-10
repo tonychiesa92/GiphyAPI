@@ -36,7 +36,9 @@ $(document).on("click",".btn-outline-primary", function () {
     })
 
         .then(function (response) {
+            
             var results = response.data;
+
             for (var i = 0; i < results.length; i++) {
                 var animalDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + results[i].rating);

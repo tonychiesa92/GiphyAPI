@@ -1,6 +1,11 @@
-button,
-        div,
-        form,
-        input {
-            margin: 10px;
-        }
+button, div, form, input {
+    margin: 10px;
+}
+
+body{
+    background-image: url(../images/background.jpg);
+}
+
+.jumbotron{
+    margin: 20px;
+}
